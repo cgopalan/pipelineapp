@@ -68,12 +68,16 @@ and it should return a json like so:
 Using the pipeline
 ========
 
-You will need 2 terminals: One that has the flask server started and the other to use for calling the api endpoint.
+1. You will need 2 terminals: One that has the flask server started and the other to use for calling the api endpoint.
 
-The api endpoint to hit for the pipeline is `http://localhost:5000/runtasks`. This only allows POST requests.
-You can start feeding the data to the pipeline like so:
+2. The api endpoint to hit for the pipeline is `http://localhost:5000/runtasks`. This only allows POST requests.
+You can start feeding the data to the pipeline like so (maybe feed only a small amount of requests to verify it works):
 ```
-cargo run -- -e http://localhost:5000/runtasks
+cargo run -- -e http://localhost:5000/runtasks -r 10
 ```
-Observe the output in the other terminal which prints some information about what records were processed, whether
+
+3. Observe the output in the other terminal which prints some information about what records were processed, whether
 the id was already processed before, and if there were some coin ids that were incorrect.
+
+4. You should also see an increasing number of files generated in the same directory with name `output_file_<timestamp>` which will have the results (coin exchange details) for each request.
+
